@@ -538,16 +538,14 @@ namespace MyActiveX
             if(com>0)
             {
                 cbbComList.Text = "COM" + com;
-                cbbBaudRate.SelectedIndex = baudrate;
+                cbbBaudRate.Text = baudrate.ToString();
                 cbbDataBits.SelectedIndex = DataBits;
                 cbbStopBits.SelectedIndex = StopBits;
                 cbbParity.SelectedIndex = Parity;
             }
-            String str=cbbComList.Text.ToString()
-            +","+(cbbBaudRate.Text.ToString())
-            +","+(cbbParity.SelectedIndex.ToString())
-            +","+(cbbDataBits.Text.ToString())
-            +","+(cbbStopBits.Text.ToString());
+            String str=cbbComList.Text.ToString() + ","+cbbBaudRate.Text.ToString() +
+                ","+cbbParity.SelectedIndex.ToString()+","+cbbDataBits.Text.ToString()
+                +","+cbbStopBits.Text.ToString();
             return str;
 
         }
@@ -561,6 +559,11 @@ namespace MyActiveX
                 GetData = null;
                 return s;
             }
+        }
+
+        public bool ComSend(String s)
+        {
+            return SendStr(s,false);
         }
 
         #endregion

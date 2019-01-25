@@ -4,47 +4,96 @@
  <head>
  </head>
  <body>
+  <p> <font size="5" face="Verdana"> 以下为js调用ActiveX控件功能按钮 </font> </p> 
+ 
  <button onclick="ActiveX_ComOpen_on()">开串口</button>
  <button onclick="ActiveX_ComOpen_off()">关串口</button>
  <button onclick="ActiveX_ComGet()">获取数据</button>
  <button onclick="ActiveX_ComSet()">设置串口</button>
+ <button onclick="ActiveX_ComSend()">串口发送</button>
+ 
 
- <div>
+ 
+ <br/>
+ <p> <font size="5" face="Verdana"> 以下为ActiveX控件显示内容.注意:控件显示大小建议大于676*590 </font> </p> 
+
+
+ <div style="float:left;width:49%;">
  <object id="zWebUart" classid="clsid:D5CDCDF1-5699-42E6-B81D-8FBB95092B99" 
          width="676"
-         height="590"
+         height="600"
          codebase="Setup1.msi">
  </object>
  </div>
+ <div style="float:right;width:49%;">
+ <p>
+ <h1>api说明:</h1> <br/>
+ 1:串口开关函数<br/>
+ 函数原型:String ComOpen(bool b)<br/>
+ 输入:b:true:打开串口	false:关闭串口<br/>
+ 输出:字符串"打开串口成功":"关闭串口成功"; 或"错误:"+错误内容<br/>
+ 如:ComOpen(false);//关闭串口<br/>
+ <br/>
+ <br/>
+ 2:设置串口参数<br/>
+ 函数原型:String ComSet(int com,int baudrate,int DataBits,int StopBits,int Parity)<br/>
+ 输入:com >1 设置com口,其他:查询当前设置<br/>
+      baudrate:波特率<br/>
+      DataBits:数据位 0:8bit  1:7bit  2:6bit<br/>
+      StopBits:0:1bit  1:1.5bit    2:2bit<br/>
+      Parity:0:None    1:Odd    2:Even    4:Mark    5:Space<br/>
+ 输出:字符串:串口号,波特率,校验位,数据位,停止位<br/>
+ 如:ComSet(2,115200,0,0,0));	//设置串口2,波特率115200 8bit 1bit停止位 无校验位<br/>
+ <br/>
+ <br/>
+ 3:获取串口接收到的数据<br/>
+ 函数原型:String ComGet()<br/>
+ 输入:无<br/>
+ 输出:串口接收到的字符串<br/>
+ <br/>
+ <br/>
+ 4:串口发送数据<br/>
+ 函数原型:bool ComSent(String s)<br/>
+ 输入:要发送的字符串<br/>
+ 输出:发送是否成功<br/>
+ <br/>
+ <br/>
+ 
+ 
+ 
+ 
+ <br/>
+ </p>
+ </div>
  </body>
  </html>
-<script type="text/javascript">
-var comActiveX;
-comActiveX = new ActiveXObject("MyActiveX.MyActiveXControl");
- comActiveX.attachEvent("eventsGet",function(msg){alert(msg)})
-    
 
-</script>
 <script type="text/javascript" language="javascript">
     function ActiveX_ComOpen_on() {
-      	alert (document.getElementById("zWebUart").ComOpen(true));	//关闭串口
+      	alert (document.getElementById("zWebUart").ComOpen(true));	
     }
 </script>
 <script type="text/javascript" language="javascript">
 
     function ActiveX_ComOpen_off() {
-      	alert (document.getElementById("zWebUart").ComOpen(false));	//关闭串口
+      	alert (document.getElementById("zWebUart").ComOpen(false));	
     }
 </script>
 <script type="text/javascript" language="javascript">
 	
 	function ActiveX_ComGet() {
-      	alert (document.getElementById("zWebUart").ComGet());	//关闭串口
+      	alert (document.getElementById("zWebUart").ComGet());	
     }
 </script>
 <script type="text/javascript" language="javascript">
 	
 	function ActiveX_ComSet() {
-      	alert (document.getElementById("zWebUart").ComSet(2,115200,0,0,0));	//关闭串口
+      	alert(document.getElementById("zWebUart").ComSet(2,9600,1,1,1));	
+    }
+</script>
+<script type="text/javascript" language="javascript">
+	
+	function ActiveX_ComSend() {
+      	alert(document.getElementById("zWebUart").ComSend("32"));	
     }
 </script>
