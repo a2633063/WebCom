@@ -4,23 +4,47 @@
  <head>
  </head>
  <body>
- <button onclick="ActiveX()">ActiveX COM 鎺т欢娴嬭瘯</button>
+ <button onclick="ActiveX_ComOpen_on()">开串口</button>
+ <button onclick="ActiveX_ComOpen_off()">关串口</button>
+ <button onclick="ActiveX_ComGet()">获取数据</button>
+ <button onclick="ActiveX_ComSet()">设置串口</button>
 
  <div>
  <object id="zWebUart" classid="clsid:D5CDCDF1-5699-42E6-B81D-8FBB95092B99" 
-         width="400"
-         height="400"
+         width="676"
+         height="590"
          codebase="Setup1.msi">
  </object>
  </div>
  </body>
  </html>
- <script type="text/javascript" language="javascript">
-    function ActiveX() {
-        var activeX = document.getElementById("zWebUart");
+<script type="text/javascript">
+var comActiveX;
+comActiveX = new ActiveXObject("MyActiveX.MyActiveXControl");
+ comActiveX.attachEvent("eventsGet",function(msg){alert(msg)})
+    
 
-      	activeX.ComOpen(false);	//鍏抽棴涓插彛
+</script>
+<script type="text/javascript" language="javascript">
+    function ActiveX_ComOpen_on() {
+      	alert (document.getElementById("zWebUart").ComOpen(true));	//关闭串口
+    }
+</script>
+<script type="text/javascript" language="javascript">
 
-
+    function ActiveX_ComOpen_off() {
+      	alert (document.getElementById("zWebUart").ComOpen(false));	//关闭串口
+    }
+</script>
+<script type="text/javascript" language="javascript">
+	
+	function ActiveX_ComGet() {
+      	alert (document.getElementById("zWebUart").ComGet());	//关闭串口
+    }
+</script>
+<script type="text/javascript" language="javascript">
+	
+	function ActiveX_ComSet() {
+      	alert (document.getElementById("zWebUart").ComSet(2,115200,0,0,0));	//关闭串口
     }
 </script>

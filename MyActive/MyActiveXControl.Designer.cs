@@ -101,6 +101,7 @@
             this.cbbParity.Name = "cbbParity";
             this.cbbParity.Size = new System.Drawing.Size(98, 21);
             this.cbbParity.TabIndex = 5;
+            this.cbbParity.Text = "None";
             this.cbbParity.TextChanged += new System.EventHandler(this.cbbComSetChange);
             // 
             // cbbStopBits
@@ -114,13 +115,14 @@
             this.cbbStopBits.Name = "cbbStopBits";
             this.cbbStopBits.Size = new System.Drawing.Size(98, 21);
             this.cbbStopBits.TabIndex = 4;
+            this.cbbStopBits.Text = "1";
             this.cbbStopBits.TextChanged += new System.EventHandler(this.cbbComSetChange);
             // 
             // btnOpen
             // 
             this.btnOpen.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnOpen.Font = new System.Drawing.Font("宋体", 10F);
-            this.btnOpen.Image = global::MyActive.Properties.Resources.close;
+            this.btnOpen.Image = global::ZWebCom.Properties.Resources.close;
             this.btnOpen.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnOpen.Location = new System.Drawing.Point(9, 157);
             this.btnOpen.Name = "btnOpen";
@@ -157,6 +159,7 @@
             this.cbbBaudRate.Name = "cbbBaudRate";
             this.cbbBaudRate.Size = new System.Drawing.Size(98, 21);
             this.cbbBaudRate.TabIndex = 2;
+            this.cbbBaudRate.Text = "115200";
             this.cbbBaudRate.ValueMember = "1";
             this.cbbBaudRate.TextChanged += new System.EventHandler(this.cbbComSetChange);
             // 
@@ -166,7 +169,7 @@
             this.panel_Rec.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_Rec.Location = new System.Drawing.Point(174, 0);
             this.panel_Rec.Name = "panel_Rec";
-            this.panel_Rec.Size = new System.Drawing.Size(824, 459);
+            this.panel_Rec.Size = new System.Drawing.Size(502, 459);
             this.panel_Rec.TabIndex = 8;
             // 
             // groupBox2
@@ -176,7 +179,7 @@
             this.groupBox2.Font = new System.Drawing.Font("宋体", 10F);
             this.groupBox2.Location = new System.Drawing.Point(0, 0);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(824, 459);
+            this.groupBox2.Size = new System.Drawing.Size(502, 459);
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "数据接收区";
@@ -189,7 +192,7 @@
             this.txtShowData.Multiline = true;
             this.txtShowData.Name = "txtShowData";
             this.txtShowData.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtShowData.Size = new System.Drawing.Size(818, 437);
+            this.txtShowData.Size = new System.Drawing.Size(496, 437);
             this.txtShowData.TabIndex = 2;
             this.txtShowData.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtShowData_KeyPress);
             // 
@@ -199,7 +202,7 @@
             this.panel_Send.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel_Send.Location = new System.Drawing.Point(174, 459);
             this.panel_Send.Name = "panel_Send";
-            this.panel_Send.Size = new System.Drawing.Size(824, 106);
+            this.panel_Send.Size = new System.Drawing.Size(502, 106);
             this.panel_Send.TabIndex = 9;
             // 
             // groupBox3
@@ -210,7 +213,7 @@
             this.groupBox3.Font = new System.Drawing.Font("宋体", 10F);
             this.groupBox3.Location = new System.Drawing.Point(0, 0);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(824, 106);
+            this.groupBox3.Size = new System.Drawing.Size(502, 106);
             this.groupBox3.TabIndex = 4;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "数据发送区";
@@ -219,7 +222,7 @@
             // 
             this.btnSend.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSend.Font = new System.Drawing.Font("宋体", 10F);
-            this.btnSend.Location = new System.Drawing.Point(742, 22);
+            this.btnSend.Location = new System.Drawing.Point(420, 22);
             this.btnSend.Name = "btnSend";
             this.btnSend.Size = new System.Drawing.Size(78, 76);
             this.btnSend.TabIndex = 2;
@@ -235,7 +238,7 @@
             this.txtSendData.Multiline = true;
             this.txtSendData.Name = "txtSendData";
             this.txtSendData.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtSendData.Size = new System.Drawing.Size(733, 76);
+            this.txtSendData.Size = new System.Drawing.Size(411, 76);
             this.txtSendData.TabIndex = 1;
             // 
             // panel_Setting
@@ -520,6 +523,7 @@
             this.cbbDataBits.Name = "cbbDataBits";
             this.cbbDataBits.Size = new System.Drawing.Size(98, 21);
             this.cbbDataBits.TabIndex = 3;
+            this.cbbDataBits.Text = "8";
             this.cbbDataBits.TextChanged += new System.EventHandler(this.cbbComSetChange);
             // 
             // cbbComList
@@ -530,6 +534,8 @@
             this.cbbComList.Name = "cbbComList";
             this.cbbComList.Size = new System.Drawing.Size(98, 21);
             this.cbbComList.TabIndex = 1;
+            this.cbbComList.Text = "COM1";
+            this.cbbComList.DropDown += new System.EventHandler(this.cbbComList_DropDown);
             this.cbbComList.TextChanged += new System.EventHandler(this.cbbComSetChange);
             // 
             // label2
@@ -587,7 +593,7 @@
             this.panel_Log.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel_Log.Location = new System.Drawing.Point(0, 565);
             this.panel_Log.Name = "panel_Log";
-            this.panel_Log.Size = new System.Drawing.Size(998, 25);
+            this.panel_Log.Size = new System.Drawing.Size(676, 25);
             this.panel_Log.TabIndex = 10;
             // 
             // Log
@@ -606,7 +612,7 @@
             // 
             this.btnCleanCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCleanCount.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnCleanCount.Location = new System.Drawing.Point(928, 1);
+            this.btnCleanCount.Location = new System.Drawing.Point(606, 1);
             this.btnCleanCount.Name = "btnCleanCount";
             this.btnCleanCount.Size = new System.Drawing.Size(66, 20);
             this.btnCleanCount.TabIndex = 14;
@@ -619,7 +625,7 @@
             this.lblRevCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblRevCount.AutoSize = true;
             this.lblRevCount.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblRevCount.Location = new System.Drawing.Point(722, 2);
+            this.lblRevCount.Location = new System.Drawing.Point(400, 2);
             this.lblRevCount.MinimumSize = new System.Drawing.Size(100, 0);
             this.lblRevCount.Name = "lblRevCount";
             this.lblRevCount.Padding = new System.Windows.Forms.Padding(2);
@@ -633,7 +639,7 @@
             this.lblSendCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblSendCount.AutoSize = true;
             this.lblSendCount.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblSendCount.Location = new System.Drawing.Point(825, 2);
+            this.lblSendCount.Location = new System.Drawing.Point(503, 2);
             this.lblSendCount.MinimumSize = new System.Drawing.Size(100, 0);
             this.lblSendCount.Name = "lblSendCount";
             this.lblSendCount.Padding = new System.Windows.Forms.Padding(2);
@@ -662,7 +668,7 @@
             this.Controls.Add(this.panel_Setting);
             this.Controls.Add(this.panel_Log);
             this.Name = "MyActiveXControl";
-            this.Size = new System.Drawing.Size(998, 590);
+            this.Size = new System.Drawing.Size(676, 590);
             this.panel_Rec.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();

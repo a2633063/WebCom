@@ -21,20 +21,20 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_8A151C3FD02D56627280A75693479876"
+        "MsmKey" = "8:_C96ABD412DDD6038ED331FE936483247"
         "OwnerKey" = "8:_7F27FDEDA54945EB9AD676769813D0D2"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_8A151C3FD02D56627280A75693479876"
+        "OwnerKey" = "8:_7F27FDEDA54945EB9AD676769813D0D2"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_7F27FDEDA54945EB9AD676769813D0D2"
+        "OwnerKey" = "8:_C96ABD412DDD6038ED331FE936483247"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -55,13 +55,29 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.5"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.5 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.5"
+                    }
+                }
+            }
         }
         "Release"
         {
         "DisplayName" = "8:Release"
         "IsDebugOnly" = "11:FALSE"
         "IsReleaseOnly" = "11:TRUE"
-        "OutputFilename" = "8:Release\\Setup1.msi"
+        "OutputFilename" = "8:Release\\ZWebCom.msi"
         "PackageFilesAs" = "3:2"
         "PackageFileSize" = "3:-2147483648"
         "CabType" = "3:1"
@@ -71,6 +87,22 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.5"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.5 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.5"
+                    }
+                }
+            }
         }
     }
     "Deployable"
@@ -100,14 +132,14 @@
         }
         "File"
         {
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_8A151C3FD02D56627280A75693479876"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_C96ABD412DDD6038ED331FE936483247"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
             "AssemblyAsmDisplayName" = "8:System.Net.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
                 "ScatterAssemblies"
                 {
-                    "_8A151C3FD02D56627280A75693479876"
+                    "_C96ABD412DDD6038ED331FE936483247"
                     {
                     "Name" = "8:System.Net.Http.dll"
                     "Attributes" = "3:512"
@@ -186,9 +218,9 @@
         "Product"
         {
         "Name" = "8:Microsoft Visual Studio"
-        "ProductName" = "8:Setup1"
+        "ProductName" = "8:ZWebCom"
         "ProductCode" = "8:{44CFC116-C412-4FCE-A331-961F90506014}"
-        "PackageCode" = "8:{F1B1653F-9956-411D-B680-44D0D737204C}"
+        "PackageCode" = "8:{A5013887-CB6F-44CF-8244-FDA8E0DF41EB}"
         "UpgradeCode" = "8:{BA3BAC53-3475-403D-83E8-18008F45AA28}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -196,12 +228,12 @@
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
         "ProductVersion" = "8:1.0.0"
-        "Manufacturer" = "8:Default Company Name"
+        "Manufacturer" = "8:Zip"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
-        "Title" = "8:Setup1"
+        "Title" = "8:ZWebCom"
         "Subject" = "8:"
-        "ARPCONTACT" = "8:Default Company Name"
+        "ARPCONTACT" = "8:Zip"
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:"
         "ARPURLINFOABOUT" = "8:"
@@ -709,7 +741,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_7F27FDEDA54945EB9AD676769813D0D2"
             {
-            "SourcePath" = "8:..\\MyActive\\obj\\Debug\\MyActive.dll"
+            "SourcePath" = "8:..\\MyActive\\obj\\Release\\ZWebCom.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_F9C9945E032740F5B42E34B87F5FACCE"

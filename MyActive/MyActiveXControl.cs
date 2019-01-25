@@ -12,25 +12,24 @@ using MyActive;
 
 namespace MyActiveX
 {
+
     //不可改变
     [Guid("D5CDCDF1-5699-42E6-B81D-8FBB95092B99"), ComVisible(true)]
     //[Guid("073A987E-2A7C-4874-8BEE-321E04F4E84E"), ComVisible(true)]
     public partial class MyActiveXControl : UserControl, IObjectSafety
     {
+        String GetData = null;
 
         public MyActiveXControl()
         {
             InitializeComponent();
-            MessageBox.Show("ActiveX test");
-            this.MinimumSize = this.Size;
+            //this.MinimumSize = this.Size;
             init();
         }
 
         public delegate void HandleInterfaceUpdataDelegate(string text);//定义一个委托
 
-        private HandleInterfaceUpdataDelegate interfaceUpdataHandle;//声明
 
-        bool isClose = false;//是否关闭
 
         #region IObjectSafety 成员
         private const string _IID_IDispatch = "{00020400-0000-0000-C000-000000000046}";
@@ -106,12 +105,11 @@ namespace MyActiveX
 
         #endregion
 
-
         #region 初始化
         private void init()
         {
             #region 控件初始化
-            btnSend.Enabled = false;
+            //btnSend.Enabled = false;
             cbbComList.Items.AddRange(SerialPort.GetPortNames());
 
             #endregion
@@ -190,17 +188,20 @@ namespace MyActiveX
         #region 打开/关闭串口
         public String ComOpen(bool b)
         {
-            String str = "";
+            String str = b?"打开串口成功":"关闭串口成功";
             try
             {
                 if (b)
                 {
-                    ComDevice.PortName = cbbComList.Text.ToString();
-                    ComDevice.BaudRate = Convert.ToInt32(cbbBaudRate.Text.ToString());
-                    ComDevice.Parity = (Parity)Convert.ToInt32(cbbParity.SelectedIndex.ToString());
-                    ComDevice.DataBits = Convert.ToInt32(cbbDataBits.Text.ToString());
-                    ComDevice.StopBits = (StopBits)Convert.ToInt32(cbbStopBits.Text.ToString());
-                    ComDevice.Open();
+                    if (!ComDevice.IsOpen)
+                    {
+                        ComDevice.PortName = cbbComList.Text.ToString();
+                        ComDevice.BaudRate = Convert.ToInt32(cbbBaudRate.Text.ToString());
+                        ComDevice.Parity = (Parity)Convert.ToInt32(cbbParity.SelectedIndex.ToString());
+                        ComDevice.DataBits = Convert.ToInt32(cbbDataBits.Text.ToString());
+                        ComDevice.StopBits = (StopBits)Convert.ToInt32(cbbStopBits.Text.ToString());
+                        ComDevice.Open();
+                    }
                 }
                 else
                 {
@@ -221,14 +222,14 @@ namespace MyActiveX
                 {
                     btnSend.Enabled = false;
                     btnOpen.Text = "打开串口";
-                    btnOpen.Image = MyActive.Properties.Resources.close;
+                    btnOpen.Image = ZWebCom.Properties.Resources.close;
                     Log.Text = "串口已关闭";
                 }
                 else
                 {
                     btnSend.Enabled = true;
                     btnOpen.Text = "关闭串口";
-                    btnOpen.Image = MyActive.Properties.Resources.open;
+                    btnOpen.Image = ZWebCom.Properties.Resources.open;
                     // 串口号,波特率,数据位,停止位.校验位
                     Log.Text = "串口已开启:" + cbbComList.Text + "," + cbbBaudRate.Text + "," + cbbDataBits.Text + "," + cbbStopBits.Text + "," + cbbParity.Text;
                 }
@@ -441,6 +442,8 @@ namespace MyActiveX
                     }
                 }
                 txtShowData.AppendText(content);
+                if (GetData == null) GetData = content;
+                else GetData = GetData + content;
             }));
         }
         #endregion
@@ -521,5 +524,47 @@ namespace MyActiveX
             ((RadioButton)sender).Checked = true;
         }
         #endregion
+
+        #region js调用函数
+        /*
+         * in: com >1 设置com口,其他:查询当前设置
+         *     baudrate:波特率
+         *     DataBits:数据位 0:8bit  1:7bit  2:6bit
+         *     StopBits:0:1bit  1:1.5bit    2:2bit
+         *     Parity:0:None    1:Odd    2:Even    4:Mark    5:Space
+         * */
+        public String ComSet(int com,int baudrate,int DataBits,int StopBits,int Parity)
+        {
+            if(com>0)
+            {
+                cbbComList.Text = "COM" + com;
+                cbbBaudRate.SelectedIndex = baudrate;
+                cbbDataBits.SelectedIndex = DataBits;
+                cbbStopBits.SelectedIndex = StopBits;
+                cbbParity.SelectedIndex = Parity;
+            }
+            String str=cbbComList.Text.ToString()
+            +","+(cbbBaudRate.Text.ToString())
+            +","+(cbbParity.SelectedIndex.ToString())
+            +","+(cbbDataBits.Text.ToString())
+            +","+(cbbStopBits.Text.ToString());
+            return str;
+
+        }
+
+        public String ComGet()
+        {
+            if (GetData == null) return "";
+            else
+            {
+                String s = GetData;
+                GetData = null;
+                return s;
+            }
+        }
+
+        #endregion
+
+
     }
 }
