@@ -77,6 +77,7 @@
             this.ComDevice = new System.IO.Ports.SerialPort(this.components);
             this.timerAutoSend = new System.Windows.Forms.Timer(this.components);
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.timerAutoClose = new System.Windows.Forms.Timer(this.components);
             this.panel_Rec.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.panel_Send.SuspendLayout();
@@ -659,6 +660,11 @@
             this.timerAutoSend.Interval = 1;
             this.timerAutoSend.Tick += new System.EventHandler(this.timerAutoSend_Tick);
             // 
+            // timerAutoClose
+            // 
+            this.timerAutoClose.Interval = 500;
+            this.timerAutoClose.Tick += new System.EventHandler(this.timerAutoClose_Tick);
+            // 
             // MyActiveXControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -738,5 +744,6 @@
         private System.Windows.Forms.Label lblSendCount;
         private System.IO.Ports.SerialPort ComDevice;
         private System.Windows.Forms.Timer timerAutoSend;
+        private System.Windows.Forms.Timer timerAutoClose;
     }
 }

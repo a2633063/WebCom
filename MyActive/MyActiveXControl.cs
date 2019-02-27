@@ -18,6 +18,7 @@ namespace MyActiveX
     //[Guid("073A987E-2A7C-4874-8BEE-321E04F4E84E"), ComVisible(true)]
     public partial class MyActiveXControl : UserControl, IObjectSafety
     {
+        int timerCount = 4;
         String GetData = null;
 
         public MyActiveXControl()
@@ -193,6 +194,8 @@ namespace MyActiveX
             {
                 if (b)
                 {
+                    timerAutoClose.Enabled = true;
+                    timerCount = 4;
                     if (!ComDevice.IsOpen)
                     {
                         ComDevice.PortName = cbbComList.Text.ToString();
@@ -535,7 +538,8 @@ namespace MyActiveX
          * */
         public String ComSet(int com,int baudrate,int DataBits,int StopBits,int Parity)
         {
-            if(com>0)
+            timerCount = 4;
+            if (com>0)
             {
                 cbbComList.Text = "COM" + com;
                 cbbBaudRate.Text = baudrate.ToString();
@@ -543,15 +547,19 @@ namespace MyActiveX
                 cbbStopBits.SelectedIndex = StopBits;
                 cbbParity.SelectedIndex = Parity;
             }
-            String str=cbbComList.Text.ToString() + ","+cbbBaudRate.Text.ToString() +
-                ","+cbbParity.SelectedIndex.ToString()+","+cbbDataBits.Text.ToString()
-                +","+cbbStopBits.Text.ToString();
+            String str=cbbComList.Text.ToString() + 
+                ","+cbbBaudRate.Text.ToString() +
+                ","+cbbDataBits.Text.ToString()+
+                ","+cbbStopBits.Text.ToString()+
+                ","+cbbParity.Text.ToString();
+
             return str;
 
         }
 
         public String ComGet()
         {
+            timerCount = 4;
             if (GetData == null) return "";
             else
             {
@@ -563,11 +571,23 @@ namespace MyActiveX
 
         public bool ComSend(String s)
         {
+            timerCount = 4;
             return SendStr(s,false);
         }
 
+
         #endregion
 
+        private void timerAutoClose_Tick(object sender, EventArgs e)
+        {
+            timerCount--;
+            if (timerCount == 0)
+            {
+                if (ComDevice.IsOpen)
+                    ComOpen(false);
 
+                timerAutoClose.Enabled = false;
+            }
+        }
     }
 }

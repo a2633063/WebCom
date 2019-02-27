@@ -28,13 +28,13 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_7F27FDEDA54945EB9AD676769813D0D2"
+        "OwnerKey" = "8:_C96ABD412DDD6038ED331FE936483247"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_C96ABD412DDD6038ED331FE936483247"
+        "OwnerKey" = "8:_7F27FDEDA54945EB9AD676769813D0D2"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -124,7 +124,7 @@
                 {
                 "Name" = "8:.NET Framework"
                 "Message" = "8:[VSDNETMSG]"
-                "FrameworkVersion" = "8:.NETFramework,Version=v2.0"
+                "FrameworkVersion" = "8:.NETFramework,Version=v4.5"
                 "AllowLaterVersions" = "11:FALSE"
                 "InstallUrl" = "8:http://go.microsoft.com/fwlink/?LinkId=395269"
                 }
@@ -220,7 +220,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:ZWebCom"
         "ProductCode" = "8:{44CFC116-C412-4FCE-A331-961F90506014}"
-        "PackageCode" = "8:{A5013887-CB6F-44CF-8244-FDA8E0DF41EB}"
+        "PackageCode" = "8:{778C2F90-5305-42AB-950E-AB54FD9B1BC6}"
         "UpgradeCode" = "8:{BA3BAC53-3475-403D-83E8-18008F45AA28}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
